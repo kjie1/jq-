@@ -1,0 +1,76 @@
+<ul class="menu">
+  menu
+</ul>
+<div class="menu-content">
+  <div class="tabs"></div>
+  <div class="details"></div>
+</div>
+
+<script>
+  (function () {
+    var menuData = [];
+    // 请求菜单栏的数据
+    $.ajax({
+      url: "/menu",
+      type: "get",
+      dataType: "json",
+      success: function (res) {
+        menuData = res.data;
+        renderMenuList(res.data);
+      },
+    });
+    // 渲染左侧菜单栏
+    function renderMenuList(data) {
+      // li标签字符串的数组
+      var oLiArray = data.map(function (item) {
+        // li下面对应a标签字符串的数组
+        var oAs = item.titles.map(function (title) {
+          return `<a href="${title.href}">${title.name}</a>`;
+        });
+        return `<li class="menu-item">${oAs.join("/")}</li>`;
+      });
+      // 将创建好的所有菜单元素 插入到页面里面
+      $(".menu").html(oLiArray.join(""));
+    }
+
+    // 鼠标移入每一行菜单 对应的功能
+    $(".menu").on("mouseenter", "li", function () {
+      // 背景颜色的变换
+      $(this).addClass("menu-active").siblings().removeClass("menu-active");
+      //   拿取到当前鼠标移入的li的索引值
+      var index = $(this).index();
+      // 渲染右侧内容区
+      renderMenuContent(menuData[index].content);
+    });
+    // 渲染右侧内容区的方法 data 是当前内容区数据
+    function renderMenuContent(data) {
+      var tabsData = data.tabs;
+      var detailsData = data.details;
+      var tabsArr = tabsData.map(function (tab) {
+        return `<a href="${tab.href}">${tab.name}<i class="iconfont">&#xe625;</i></a>`;
+      });
+
+      $(".menu-content > .tabs").html(tabsArr.join(""));
+      // 生成右侧内容区中每一行的标签数组
+      var oDl = detailsData.map(function (detail) {
+        // 创建dt标签字符串
+        var oDt = `<dt class="menu-item-title"><a href="#">${detail.category}<i class="iconfont">&#xe625;</i></a></dt>`;
+        // 生成dd标签内部所有a标签字符串的数组
+        var oAs = detail.items.map(function (item) {
+          return `<a href="${item.href}">${item.name}</a>`;
+        });
+        // 创建dd标签字符串
+        var oDD = `<dd class="menu-item">${oAs.join("")}</dd>`;
+        return `<dl class="menu-item-details">${oDt}${oDD}</dl>`;
+      });
+      // 将右侧内容区内的信息插入到页面当中
+      $(".menu-content > .details").html(oDl.join(""));
+      $(".menu-content").show();
+    }
+
+    $(".fs-1").mouseleave(function () {
+      $(".menu-content").hide();
+      $(".menu-active").removeClass("menu-active");
+    });
+  })();
+</script>

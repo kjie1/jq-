@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东首屏</title>
+    <link rel="stylesheet" href="./swiper/index.css">
+    <style>
+        .demo {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">
+       <div class="item">item1</div>
+       <div class="item">item2</div>
+       <div class="item">item3</div>
+    </div>
+    <script src="./js/jquery-3.3.1.js"></script>
+    <!-- 轮播图插件 -->
+    <script src="./swiper/index.js"></script>
+    <script>
+        $('.demo').swiper({
+            // 轮播的内容列表
+            contentList: $('.item'),
+            // 自动轮播间隔时间
+            autoChangeTime: 3000,
+            // 轮播的动画类型 fade： 淡入淡出   animate 从左到右的轮播
+            type: 'animate', // animate
+            // 是否自动轮播
+            isAuto: true,
+            // 左右按钮的显示状态  always代表一致显示   hide代表隐藏  hover 鼠标移入的时候显示
+            showChangeBtn: 'always', 
+            // 是否显示小圆点
+            showSpots: true,
+            // 小圆点的大小
+            spotSize: 10,
+            // 小圆点的位置
+            spotPosition: 'left',
+            // 小圆点的背景颜色
+            spotColor: 'red',
+            // 轮播内容的大小
+            width: 400,
+            height: 300
+        })
+    </script>
+</body>
+</html>

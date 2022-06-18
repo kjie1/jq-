@@ -1,0 +1,81 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: #eee;
+}
+.shortcut {
+    height: 30px;
+    border-bottom: 1px solid #ddd;
+    background-color: #e3e4e5;
+}
+
+
+.seckill {
+    height: 260px;
+    margin-top: 20px;
+}
+.header {
+    height: 140px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+.w, .fs {
+    width: 1190px;
+    margin: 0 auto;
+    min-height: 100% ;
+}
+.fs {
+    height: 470px;
+    margin-top: 10px;
+}
+.fs-1 {
+    width: 190px;
+    background-color: #fff;
+    height: 100%;
+    float: left;
+    margin-right: 10px;
+}
+.fs-2 {
+    float: left;
+    width: 790px;
+    height: 100%;
+    margin-right: 10px;
+}
+.fs-3 {
+    float: right;
+    width: 190px;
+    background-color: #fff;
+    height: 100%;
+}
+
+.fs-2 .sliderWrapper {
+    width: 590px;
+    height: 470px;
+    float: left;
+    background-color: #ddd;
+}
+.fs-2 .silderBanner {
+    width: 190px;
+    height: 470px;
+    float: right;
+    /* background-color: #ddd; */
+}
+
+.iconfont {
+    font-family: iconfont;
+    font-style: normal;
+    font-size: 12px;
+}
+
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+i {
+    font-style: normal;
+}
